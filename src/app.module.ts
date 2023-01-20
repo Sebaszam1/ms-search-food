@@ -12,6 +12,7 @@ import { PrismaModule } from './core/prisma/prisma.module';
 import { RestaurantsModule } from './restaurants/restaurants.module';
 import { MenusModule } from './menus/menus.module';
 import { CategoriesModule } from './categories/categories.module';
+import { SearchsModule } from './searchs/searchs.module';
 
 @Module({
   imports: [
@@ -32,6 +33,7 @@ import { CategoriesModule } from './categories/categories.module';
     RestaurantsModule,
     MenusModule,
     CategoriesModule,
+    SearchsModule,
   ],
   controllers: [AppController],
   providers: [
