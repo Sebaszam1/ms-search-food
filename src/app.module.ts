@@ -10,6 +10,8 @@ import { APP_INTERCEPTOR } from '@nestjs/core';
 import { TransformInterceptor } from './core/interceptors/transform.interceptor';
 import { PrismaModule } from './core/prisma/prisma.module';
 import { RestaurantsModule } from './restaurants/restaurants.module';
+import { MenusModule } from './menus/menus.module';
+import { CategoriesModule } from './categories/categories.module';
 
 @Module({
   imports: [
@@ -28,6 +30,8 @@ import { RestaurantsModule } from './restaurants/restaurants.module';
     }),
     PrismaModule,
     RestaurantsModule,
+    MenusModule,
+    CategoriesModule,
   ],
   controllers: [AppController],
   providers: [
