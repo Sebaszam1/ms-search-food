@@ -14,7 +14,7 @@ export class MenusController {
 
   @Get()
   findAll() {
-    return this.menusService.findAll();
+    return this.menusService.findAll({});
   }
 
   @Get(':id')

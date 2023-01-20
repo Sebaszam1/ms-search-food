@@ -8,21 +8,37 @@ import { UpdateRestaurantDto } from './dto/update-restaurant.dto';
 export class RestaurantsService {
   constructor(private dataSources: PrismaService) {}
 
-  async create(data: Prisma.RestaurantCreateInput) : Promise<Restaurant>  {
+  async create(data: Prisma.RestaurantCreateInput): Promise<Restaurant> {
     try {
-      console.log(data)
+      console.log(data);
       return await this.dataSources.restaurant.create({
-        data
+        data,
       });
     } catch (error) {
       console.log(error);
-      throw new HttpException(`Error Create Restaurant`, 400); 
+      throw new HttpException(`Error Create Restaurant`, 400);
     }
-
   }
 
-  findAll() {
-    return `This action returns all restaurants`;
+  async findAll(params: {
+    skip?: number;
+    take?: number;
+    cursor?: Prisma.RestaurantWhereUniqueInput;
+    where?: Prisma.RestaurantWhereInput;
+    orderBy?: Prisma.RestaurantOrderByWithRelationInput;
+  }): Promise<Restaurant[]> {
+    try {
+      const { skip, take, cursor, where, orderBy } = params;
+      return this.dataSources.restaurant.findMany({
+        skip,
+        take,
+        cursor,
+        where,
+        orderBy,
+      });
+    } catch (error) {
+      throw new HttpException(`Error Get Restaurants`, 400);
+    }
   }
 
   findOne(id: number) {

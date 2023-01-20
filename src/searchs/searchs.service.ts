@@ -1,26 +1,29 @@
 import { Injectable } from '@nestjs/common';
+import { RestaurantsService } from 'src/restaurants/restaurants.service';
 import { CreateSearchDto } from './dto/create-search.dto';
 import { UpdateSearchDto } from './dto/update-search.dto';
 
 @Injectable()
 export class SearchsService {
-  create(createSearchDto: CreateSearchDto) {
-    return 'This action adds a new search';
-  }
+  constructor(private restaurantsService: RestaurantsService){}
 
-  findAll() {
-    return `This action returns all searchs`;
-  }
+  async searchWord(word: string){
+    const restaurants = await  this.restaurantsService.findAll({
+      where: {
+        name: {
+          contains: word
+        }
+      }
+    })
 
-  findOne(id: number) {
-    return `This action returns a #${id} search`;
-  }
+    const Menus = await  this.restaurantsService.findAll({
+      where: {
+        name: {
+          contains: word
+        }
+      }
+    })
 
-  update(id: number, updateSearchDto: UpdateSearchDto) {
-    return `This action updates a #${id} search`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} search`;
+    return { restaurants, Menus }
   }
 }

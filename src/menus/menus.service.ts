@@ -20,9 +20,28 @@ export class MenusService {
     }
 
   }
-  findAll() {
-    return `This action returns all menus`;
+
+  async findAll(params: {
+    skip?: number;
+    take?: number;
+    cursor?: Prisma.MenuWhereUniqueInput;
+    where?: Prisma.MenuWhereInput;
+    orderBy?: Prisma.MenuOrderByWithRelationInput;
+  }): Promise<Menu[]> {
+    try {
+      const { skip, take, cursor, where, orderBy } = params;
+      return this.dataSources.menu.findMany({
+        skip,
+        take,
+        cursor,
+        where,
+        orderBy,
+      });
+    } catch (error) {
+      throw new HttpException(`Error Get Restaurants`, 400);
+    }
   }
+  
 
   findOne(id: number) {
     return `This action returns a #${id} menu`;
