@@ -8,6 +8,8 @@ import config from './config';
 import { enviroments } from './enviroments';
 import { APP_INTERCEPTOR } from '@nestjs/core';
 import { TransformInterceptor } from './core/interceptors/transform.interceptor';
+import { PrismaModule } from './core/prisma/prisma.module';
+import { RestaurantsModule } from './restaurants/restaurants.module';
 
 @Module({
   imports: [
@@ -24,6 +26,8 @@ import { TransformInterceptor } from './core/interceptors/transform.interceptor'
         PORT: Joi.number().required(),
       }),
     }),
+    PrismaModule,
+    RestaurantsModule,
   ],
   controllers: [AppController],
   providers: [
