@@ -1,6 +1,4 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 
 import { ConfigModule } from '@nestjs/config';
 import * as Joi from 'joi';
@@ -37,10 +35,10 @@ import { SubsidiaryModule } from './subsidiary/subsidiary.module';
     SearchsModule,
     SubsidiaryModule,
   ],
-  controllers: [AppController],
+  controllers: [],
   providers: [
     { provide: APP_INTERCEPTOR, useClass: TransformInterceptor },
-    AppService,
+    
   ],
 })
 export class AppModule {}

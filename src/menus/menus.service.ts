@@ -1,6 +1,6 @@
 import { HttpException, Injectable } from '@nestjs/common';
 import { Menu, Prisma } from '@prisma/client';
-import { PrismaService } from 'src/core/prisma/prisma.service';
+import { PrismaService } from '../core/prisma/prisma.service';
 import { CreateMenuDto } from './dto/create-menu.dto';
 import { UpdateMenuDto } from './dto/update-menu.dto';
 

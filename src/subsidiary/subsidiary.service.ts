@@ -1,7 +1,7 @@
 import { Subsidiary } from './entities/subsidiary.entity';
 import { HttpException, Injectable } from '@nestjs/common';
 import { Prisma } from '@prisma/client';
-import { PrismaService } from 'src/core/prisma/prisma.service';
+import { PrismaService } from '../core/prisma/prisma.service';
 import { CreateSubsidiaryDto } from './dto/create-subsidiary.dto';
 import { UpdateSubsidiaryDto } from './dto/update-subsidiary.dto';
 
@@ -40,17 +40,5 @@ export class SubsidiaryService {
     } catch (error) {
       throw new HttpException(`Error Get Subsidiary`, 400);
     }
-  }
-
-  findOne(id: number) {
-    return `This action returns a #${id} subsidiary`;
-  }
-
-  update(id: number, updateSubsidiaryDto: UpdateSubsidiaryDto) {
-    return `This action updates a #${id} subsidiary`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} subsidiary`;
   }
 }

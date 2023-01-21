@@ -2,7 +2,7 @@ import { PrismaService } from './../core/prisma/prisma.service';
 import { CategoriesService } from './../categories/categories.service';
 import { MenusService } from './../menus/menus.service';
 import { HttpException, Injectable } from '@nestjs/common';
-import { RestaurantsService } from 'src/restaurants/restaurants.service';
+import { RestaurantsService } from '../restaurants/restaurants.service';
 import { CreateSearchDto } from './dto/create-search.dto';
 import { UpdateSearchDto } from './dto/update-search.dto';
 
