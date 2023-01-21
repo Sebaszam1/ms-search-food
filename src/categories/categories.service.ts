@@ -20,8 +20,25 @@ export class CategoriesService {
 
   }
 
-  findAll() {
-    return `This action returns all categories`;
+  async findAll(params: {
+    skip?: number;
+    take?: number;
+    cursor?: Prisma.CategoryWhereUniqueInput;
+    where?: Prisma.CategoryWhereInput;
+    orderBy?: Prisma.CategoryOrderByWithRelationInput;
+  }): Promise<Category[]> {
+    try {
+      const { skip, take, cursor, where, orderBy } = params;
+      return this.dataSources.category.findMany({
+        skip,
+        take,
+        cursor,
+        where,
+        orderBy
+      });
+    } catch (error) {
+      throw new HttpException(`Error Get Categories`, 400);
+    }
   }
 
   findOne(id: number) {

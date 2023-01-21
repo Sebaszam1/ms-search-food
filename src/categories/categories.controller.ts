@@ -1,5 +1,5 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
-import { ApiTags } from '@nestjs/swagger';
+import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import { CategoriesService } from './categories.service';
 import { CreateCategoryDto } from './dto/create-category.dto';
 import { UpdateCategoryDto } from './dto/update-category.dto';
@@ -10,13 +10,21 @@ export class CategoriesController {
   constructor(private readonly categoriesService: CategoriesService) {}
 
   @Post()
+  @ApiOperation({
+    summary: 'Endpoint para crear las diferentes categorias de platos',
+    description: 'Nos permite crear las categorias para los menus',
+  })
   create(@Body() createCategoryDto: CreateCategoryDto) {
     return this.categoriesService.create(createCategoryDto);
   }
 
+  @ApiOperation({
+    summary: 'Endpoint para obtener las categorias de platos',
+    description: 'Nos permite obtener las categorias para los menus no necesita argumentos',
+  })
   @Get()
   findAll() {
-    return this.categoriesService.findAll();
+    return this.categoriesService.findAll({});
   }
 
   // @Get(':id')

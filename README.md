@@ -24,3 +24,4 @@ FUNCIONAMIENTO:
 Nota: 
 -Por categoria: La respuesta es el restaurante con el plato de mejor calificación, si son dos platos con la misma calificación devuelve el de mejor precio. 
 -Por menu: En caso de que ingrese una palabra que no es categoria pero si esta dentro del nombre de algun menu regresa el restaurante con el plato de mejor calificación y si existe algun otro plato que contenta esa palabra ese plato tambien se retornara en order de calidad y precio.
+
