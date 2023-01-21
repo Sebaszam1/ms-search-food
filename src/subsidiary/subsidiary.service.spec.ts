@@ -1,18 +1,43 @@
+import { HttpException } from '@nestjs/common';
 import { Test, TestingModule } from '@nestjs/testing';
+import { PrismaService } from './../core/prisma/prisma.service';
 import { SubsidiaryService } from './subsidiary.service';
 
 describe('SubsidiaryService', () => {
-  let service: SubsidiaryService;
+  let subsidiaryService: SubsidiaryService;
+  let prismaService: PrismaService;
 
-  beforeEach(async () => {
-    const module: TestingModule = await Test.createTestingModule({
-      providers: [SubsidiaryService],
-    }).compile();
-
-    service = module.get<SubsidiaryService>(SubsidiaryService);
+  beforeEach(() => {
+    prismaService = new PrismaService();
+    subsidiaryService = new SubsidiaryService(prismaService);
   });
 
-  it('should be defined', () => {
-    expect(service).toBeDefined();
+  describe('create', () => {
+    it('should create a subsidiary and return the created subsidiary', async () => {
+      const data = {
+        name: 'subsidiary1',
+        id: '5',
+        subStar: 4,
+        restaurantId: '55',
+        geocodes: {}
+      };
+
+      jest.spyOn(prismaService.subsidiary,
+        'create').mockResolvedValue(data)
+
+      const result = await subsidiaryService.create(data);
+
+      expect(result).toBeDefined();
+    });
+  });
+
+  describe('findAll', () => {
+    it('should return all subsidiaries', async () => {
+      const params = { skip: 0, take: 10 };
+
+      const result = await subsidiaryService.findAll(params);
+
+      expect(result).toBeDefined();
+    });
   });
 });
