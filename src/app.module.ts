@@ -13,6 +13,7 @@ import { RestaurantsModule } from './restaurants/restaurants.module';
 import { MenusModule } from './menus/menus.module';
 import { CategoriesModule } from './categories/categories.module';
 import { SearchsModule } from './searchs/searchs.module';
+import { SubsidiaryModule } from './subsidiary/subsidiary.module';
 
 @Module({
   imports: [
@@ -34,6 +35,7 @@ import { SearchsModule } from './searchs/searchs.module';
     MenusModule,
     CategoriesModule,
     SearchsModule,
+    SubsidiaryModule,
   ],
   controllers: [AppController],
   providers: [

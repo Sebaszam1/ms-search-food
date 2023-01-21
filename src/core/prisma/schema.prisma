@@ -31,6 +31,8 @@ model Menu {
   id           String      @id @default(auto()) @map("_id") @db.ObjectId
   name         String
   description  String
+  menuStar     Float
+  price        Float
   Restaurant   Restaurant? @relation(fields: [restaurantId], references: [id])
   restaurantId String?     @db.ObjectId
   Category     Category?   @relation(fields: [categoryId], references: [id])
@@ -41,6 +43,7 @@ model Subsidiary {
   id           String      @id @default(auto()) @map("_id") @db.ObjectId
   name         String
   geocodes     Json?
+  subStar      Float
   Restaurant   Restaurant? @relation(fields: [restaurantId], references: [id])
   restaurantId String?     @db.ObjectId
 }

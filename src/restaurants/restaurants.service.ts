@@ -35,6 +35,10 @@ export class RestaurantsService {
         cursor,
         where,
         orderBy,
+        include: {
+          subsidiaries: true,
+          menus: true,
+        }
       });
     } catch (error) {
       throw new HttpException(`Error Get Restaurants`, 400);

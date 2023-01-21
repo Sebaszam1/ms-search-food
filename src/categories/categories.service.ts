@@ -8,7 +8,7 @@ import { UpdateCategoryDto } from './dto/update-category.dto';
 export class CategoriesService {
   constructor(private dataSources: PrismaService) {}
   
-  async create(data: Prisma.MenuCreateInput) : Promise<Category>  {
+  async create(data: Prisma.CategoryCreateInput) : Promise<Category>  {
     try {
       return await this.dataSources.category.create({
         data

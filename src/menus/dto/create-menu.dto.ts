@@ -10,5 +10,9 @@ export class CreateMenuDto {
     @ApiProperty()
     restaurantId?: string;
     @ApiProperty()
+    menuStar: number;
+    @ApiProperty()
+    price: number;
+    @ApiProperty()
     categoryId?: string;
 }
