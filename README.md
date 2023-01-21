@@ -1,73 +1,7 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+APLICACIÓN DE BUSQUEDA DE COMIDA
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+Para poder correr la aplicación se debe seguir estos pasos: 1-Descargar el repositorio de GitHub 2-Correr el comando "npm i" para instalar todos los paquetes usados. 3-El archivo .env.example cambiar el nombre a .env 4-Ejecutar el comando "npm run start" 5-La aplicación correra sobre la siguiente url: http://localhost:4009/api/docs/ 6-Tambien puede ser vista en: https://ms-search-food-cfhlfedkyq-uc.a.run.app/
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+DECISIONES TOMADAS: 1-Se utiliza interceptors con el fin de mejorar el formato en el que se dan las respuestas 2-Como base de datos se utiliza Mongo a traves de Atlas lo cual nos permite tener la información en la nube de mongo 3-Como ORM se utiliza prisma, que nos da facilidad al momento de crear y hacer consultas sobre la base de datos 4-El proyecto se divide en: 4.1 Categorias: Las categorias de comida, inicialmente se configuran(Vegetariana, desayuno, pollo pizza y hamburguesa) 4.2 Restaurantes: El restaurante principal, que contiene algunos datos 4.3 Subsidiary: Las sucursales del restaurante para que el cliente escoja donde puede solicitar la comida 4.4 Menu: Los diferentes menus de cada resturante con estrellas y precio. Inicialmente se configuro (Utilizar el enpoint GET de menus para ver los platos) 5-Se realizo una integración continua con Google cloud run, cada vez que se realiza un despliegue en la rama dev de Github este empieza el despliegue en Google.
 
-## Description
-
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
-
-## Installation
-
-```bash
-$ npm install
-```
-
-## Running the app
-
-```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
-```
-
-## Test
-
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
-```
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
+FUNCIONAMIENTO: Nota: -Por categoria: La respuesta es el restaurante con el plato de mejor calificación, si son dos platos con la misma calificación devuelve el de mejor precio. -Por menu: En caso de que ingrese una palabra que no es categoria pero si esta dentro del nombre de algun menu regresa el restaurante con el plato de mejor calificación y si existe algun otro plato que contenta esa palabra ese plato tambien se retornara en order de calidad y precio.
